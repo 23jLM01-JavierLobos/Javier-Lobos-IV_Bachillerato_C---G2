@@ -10,14 +10,34 @@
 public class jfrmCalc extends javax.swing.JFrame {
     //Variables restringidas - Priv
     private String entrada="";
-    private int numero1, numero2;
+    private double numero1, numero2;
     private String operador;
+    private boolean punto = true;
+    private double calcular(double n1, double n2, String op) {
+    switch (op) {
+        case "+":
+            return n1 + n2;
+        case "-":
+            return n1 - n2;
+        case "x":
+            return n1 * n2;
+        case "/":
+            if (n2 != 0) return n1 / n2;
+            else {
+                jtxtCantidad.setText("Error");
+                return 0;
+            }
+        default:
+            return n2;
+    }
+}
 
     /**
      * Creates new form jfrmCalc
      */
     public jfrmCalc() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -46,6 +66,10 @@ public class jfrmCalc extends javax.swing.JFrame {
         jbtn0 = new javax.swing.JButton();
         jbtnIgual = new javax.swing.JButton();
         jbtnBorrar = new javax.swing.JButton();
+        jbtnPorcentaje = new javax.swing.JButton();
+        jbtnRaiz = new javax.swing.JButton();
+        jbtnDecimal = new javax.swing.JButton();
+        jbtnBorrador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,11 +197,43 @@ public class jfrmCalc extends javax.swing.JFrame {
             }
         });
 
-        jbtnBorrar.setFont(new java.awt.Font("Akaash", 0, 18)); // NOI18N
+        jbtnBorrar.setFont(new java.awt.Font("Akaash", 0, 14)); // NOI18N
         jbtnBorrar.setText("AC");
         jbtnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnBorrarActionPerformed(evt);
+            }
+        });
+
+        jbtnPorcentaje.setFont(new java.awt.Font("Akaash", 0, 12)); // NOI18N
+        jbtnPorcentaje.setText("%");
+        jbtnPorcentaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPorcentajeActionPerformed(evt);
+            }
+        });
+
+        jbtnRaiz.setFont(new java.awt.Font("Akaash", 0, 12)); // NOI18N
+        jbtnRaiz.setText("√");
+        jbtnRaiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRaizActionPerformed(evt);
+            }
+        });
+
+        jbtnDecimal.setFont(new java.awt.Font("Akaash", 0, 18)); // NOI18N
+        jbtnDecimal.setText(".");
+        jbtnDecimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDecimalActionPerformed(evt);
+            }
+        });
+
+        jbtnBorrador.setFont(new java.awt.Font("Akaash", 0, 14)); // NOI18N
+        jbtnBorrador.setText("C");
+        jbtnBorrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBorradorActionPerformed(evt);
             }
         });
 
@@ -195,7 +251,9 @@ public class jfrmCalc extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jbtn6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbtnResta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtnResta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtnRaiz, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -203,7 +261,9 @@ public class jfrmCalc extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jbtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbtnSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtnSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtnPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtxtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -214,15 +274,21 @@ public class jfrmCalc extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbtnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jbtn0, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jbtn0, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbtnDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnDivi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbtnMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbtnDivi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbtnBorrador, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbtnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -235,43 +301,74 @@ public class jfrmCalc extends javax.swing.JFrame {
                     .addComponent(jbtn7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnResta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnResta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnRaiz, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnMulti, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnDivi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnDivi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtn0, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnBorrador, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtn0, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSumaActionPerformed
-        numero1=Integer.parseInt(entrada);
-        entrada="";
-        operador="+";
-        jtxtCantidad.setText(entrada);
+        numero1 = Double.parseDouble(entrada);
+        System.out.println("numero 1 = " + numero1);
+        System.out.println("numero 2 = " + numero2);
+        if (!entrada.equals("")) {
+    double valor = Double.parseDouble(entrada);
+
+    if (operador != null) {
+        numero1 = calcular(numero1, valor, operador);
+    } else {
+        numero1 = valor;
+    }
+
+    jtxtCantidad.setText(String.valueOf(numero1));
+    entrada = "";
+    operador = "+";
+}
+
+
     }//GEN-LAST:event_jbtnSumaActionPerformed
 
     private void jbtnRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRestaActionPerformed
-        numero1=Integer.parseInt(entrada);
-        entrada="";
-        operador="-";
-        jtxtCantidad.setText(entrada);
+
+        if (!entrada.equals("")) {
+    double valor = Double.parseDouble(entrada);
+
+    if (operador != null) {
+        numero1 = calcular(numero1, valor, operador);
+    } else {
+        numero1 = valor;
+    }
+
+    jtxtCantidad.setText(String.valueOf(numero1));
+    entrada = "";
+    operador = "-";
+}
+
     }//GEN-LAST:event_jbtnRestaActionPerformed
 
     private void jbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn3ActionPerformed
@@ -280,17 +377,39 @@ public class jfrmCalc extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtn3ActionPerformed
 
     private void jbtnMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMultiActionPerformed
-        numero1=Integer.parseInt(entrada);
-        entrada="";
-        operador="x";
-        jtxtCantidad.setText(entrada);
+
+        if (!entrada.equals("")) {
+    double valor = Double.parseDouble(entrada);
+
+    if (operador != null) {
+        numero1 = calcular(numero1, valor, operador);
+    } else {
+        numero1 = valor;
+    }
+
+    jtxtCantidad.setText(String.valueOf(numero1));
+    entrada = "";
+    operador = "x";
+}
+
     }//GEN-LAST:event_jbtnMultiActionPerformed
 
     private void jbtnDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDiviActionPerformed
-        numero1=Integer.parseInt(entrada);
-        entrada="";
-        operador="/";
-        jtxtCantidad.setText(entrada);
+
+        if (!entrada.equals("")) {
+    double valor = Double.parseDouble(entrada);
+
+    if (operador != null) {
+        numero1 = calcular(numero1, valor, operador);
+    } else {
+        numero1 = valor;
+    }
+
+    jtxtCantidad.setText(String.valueOf(numero1));
+    entrada = "";
+    operador = "/";
+    punto = true;
+}
     }//GEN-LAST:event_jbtnDiviActionPerformed
 
     private void jbtn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn0ActionPerformed
@@ -300,8 +419,10 @@ public class jfrmCalc extends javax.swing.JFrame {
 
     private void jbtnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIgualActionPerformed
         double resultado;
-        numero2=Integer.parseInt(entrada);
+        numero2 = Double.parseDouble(entrada);
         jtxtCantidad.setText("");
+        entrada = "";
+        
         if  (operador.equals("+")) {
             resultado=numero1+numero2;
             entrada=String.valueOf(resultado);
@@ -322,12 +443,39 @@ public class jfrmCalc extends javax.swing.JFrame {
             entrada=String.valueOf(resultado);
             jtxtCantidad.setText(entrada);
         }
+        if  (operador.equals("0")) {
+            resultado = numero1/numero2;
+            entrada=String.valueOf(resultado);
+            jtxtCantidad.setText(entrada);
+        }
+        if  (operador.equals("√")) {
+            if (numero2 >= 0) {
+            resultado = Math.sqrt(numero2);
+            entrada=String.valueOf(resultado);
+            jtxtCantidad.setText(entrada);
+            } else {
+                jtxtCantidad.setText("Error");
+            }  
+        }
+        
+        if  (operador.equals("%")) {
+            resultado = numero2/100;
+            entrada=String.valueOf(resultado);
+            jtxtCantidad.setText(entrada);
+        }
         
     }//GEN-LAST:event_jbtnIgualActionPerformed
 
     private void jbtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBorrarActionPerformed
-        entrada="0";
-        jtxtCantidad.setText(entrada);
+    
+    entrada = "";
+    numero1 = 0;
+    numero2 = 0;
+    operador = null;
+    punto = true;
+
+    jtxtCantidad.setText("0");
+
     }//GEN-LAST:event_jbtnBorrarActionPerformed
 
     private void jbtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn7ActionPerformed
@@ -369,6 +517,56 @@ public class jfrmCalc extends javax.swing.JFrame {
         entrada=entrada+2;
         jtxtCantidad.setText(entrada);
     }//GEN-LAST:event_jbtn2ActionPerformed
+
+    private void jbtnPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPorcentajeActionPerformed
+        // TODO add your handling code here:
+        if (!entrada.equals("")) {
+    double valor = Double.parseDouble(entrada);
+
+    if (operador != null) {
+        numero1 = calcular(numero1, valor, operador);
+    } else {
+        numero1 = valor;
+    }
+
+    jtxtCantidad.setText(String.valueOf(numero1));
+    entrada = "";
+    operador = "%";
+    punto = true;
+}
+
+    }//GEN-LAST:event_jbtnPorcentajeActionPerformed
+
+    private void jbtnRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRaizActionPerformed
+        // TODO add your handling code here:
+        operador = String.valueOf("√");
+        entrada = "";
+        jtxtCantidad.setText(operador);
+        punto = true;
+    }//GEN-LAST:event_jbtnRaizActionPerformed
+
+    private void jbtnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDecimalActionPerformed
+        // TODO add your handling code here:
+        if (punto) {
+            entrada = entrada + ".";
+            jtxtCantidad.setText(entrada);
+            punto = false;
+        }
+    }//GEN-LAST:event_jbtnDecimalActionPerformed
+
+    private void jbtnBorradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBorradorActionPerformed
+        // TODO add your handling code here:
+        String texto = jtxtCantidad.getText();
+        
+        if (texto.length()>1){
+            texto=texto.substring(0, texto.length()-1);
+            entrada = texto;
+            jtxtCantidad.setText(entrada);
+        } else {
+            entrada = "";
+            jtxtCantidad.setText(entrada+"0");
+        }
+    }//GEN-LAST:event_jbtnBorradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,10 +614,14 @@ public class jfrmCalc extends javax.swing.JFrame {
     private javax.swing.JButton jbtn7;
     private javax.swing.JButton jbtn8;
     private javax.swing.JButton jbtn9;
+    private javax.swing.JButton jbtnBorrador;
     private javax.swing.JButton jbtnBorrar;
+    private javax.swing.JButton jbtnDecimal;
     private javax.swing.JButton jbtnDivi;
     private javax.swing.JButton jbtnIgual;
     private javax.swing.JButton jbtnMulti;
+    private javax.swing.JButton jbtnPorcentaje;
+    private javax.swing.JButton jbtnRaiz;
     private javax.swing.JButton jbtnResta;
     private javax.swing.JButton jbtnSuma;
     private javax.swing.JTextField jtxtCantidad;

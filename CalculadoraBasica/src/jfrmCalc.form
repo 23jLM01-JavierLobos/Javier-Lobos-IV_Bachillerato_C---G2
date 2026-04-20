@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -34,6 +34,8 @@
                       <Component id="jbtn6" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbtnResta" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jbtnRaiz" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jbtn7" min="-2" pref="39" max="-2" attributes="0"/>
@@ -43,6 +45,8 @@
                       <Component id="jbtn9" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbtnSuma" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jbtnPorcentaje" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jtxtCantidad" min="-2" pref="307" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -55,17 +59,25 @@
                               <Component id="jbtn3" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jbtnBorrar" min="-2" pref="51" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jbtnIgual" min="-2" pref="39" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jbtn0" min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jbtnDecimal" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbtnDivi" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jbtnMulti" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jbtnMulti" min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jbtnDivi" min="-2" pref="39" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jbtnBorrador" min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jbtnBorrar" min="-2" pref="51" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -84,6 +96,7 @@
                   <Component id="jbtn8" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jbtn9" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jbtnSuma" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jbtnPorcentaje" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -91,6 +104,7 @@
                   <Component id="jbtn5" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jbtn6" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jbtnResta" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jbtnRaiz" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -98,15 +112,21 @@
                   <Component id="jbtn2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jbtn3" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jbtnMulti" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jbtnDivi" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtnDivi" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jbtn0" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jbtnIgual" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jbtnBorrar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jbtnBorrar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jbtnBorrador" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jbtn0" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jbtnIgual" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jbtnDecimal" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -289,12 +309,56 @@
     <Component class="javax.swing.JButton" name="jbtnBorrar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Akaash" size="18" style="0"/>
+          <Font name="Akaash" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="AC"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnBorrarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtnPorcentaje">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Akaash" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="%"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnPorcentajeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtnRaiz">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Akaash" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#x221a;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnRaizActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtnDecimal">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Akaash" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnDecimalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtnBorrador">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Akaash" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="C"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnBorradorActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
